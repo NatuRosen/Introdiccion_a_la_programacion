@@ -23,12 +23,19 @@ def cant_pedidos(nro_pedidos):
     print(f"Cantidad total de pedidos ingresados: {len(nro_pedidos)}")
 
 def unidades_por_producto(codigo_productos, cantidades):
+    prod_unicos = []
     for i in range(len(codigo_productos)):
+        ya_esta = False
         suma = 0
-        for j in range(len(codigo_productos)):
-            if codigo_productos[i] == codigo_productos[j]:
-                suma += cantidades[j]
-        print(f"Producto {codigo_productos[i]}: {suma} unidades solicitadas")
+        for h in range(len(prod_unicos)):
+            if codigo_productos[i] == prod_unicos[h]:
+                ya_esta = True
+        if ya_esta == False:
+            prod_unicos.append(codigo_productos[i])
+            for j in range(len(codigo_productos)):
+                if codigo_productos[i] == codigo_productos[j]:
+                    suma += cantidades[j]
+            print(f"Producto {codigo_productos[i]}: {suma} unidades solicitadas")
 
 def tiempo_total_fabricacion(tiempo_fabricacion):
     suma = 0
